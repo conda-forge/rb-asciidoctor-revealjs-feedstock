@@ -3,7 +3,7 @@
 schema_version: 1
 
 context:
-  version: "5.2.0"
+  version: "6.0.0"
 
 package:
   name: rb-asciidoctor-revealjs
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://rubygems.org/downloads/asciidoctor-revealjs-${{ version }}.gem
-  sha256: 3504a5e7eaf2c91de37f96189314ffb1e6bf94dad9d646d5c9a24c6691bf6ae2
+  sha256: e9f34ff721debda1bff7602fc5f267fae83b913e20476b50403a289f41fcf8fc
 
 build:
   noarch: generic
