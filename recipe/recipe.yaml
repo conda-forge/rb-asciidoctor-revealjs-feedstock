@@ -29,8 +29,17 @@ requirements:
     - asciidoctor >=2.0.0,<3.0.0
 
 tests:
+  - package_contents:
+      files:
+        - share/rubygems/gems/asciidoctor-revealjs-${{ version }}/lib/asciidoctor_revealjs.rb
+        - share/rubygems/bin/asciidoctor-revealjs
   - script:
-      - ruby -r 'asciidoctor-revealjs'
+      - ruby -r asciidoctor_revealjs -e 'exit 0'
+      - asciidoctor-revealjs --version
+      - >-
+        ruby -r asciidoctor_revealjs -e '
+        html = Asciidoctor.convert("= Smoke test\n\n== Slide\n\nHello", backend: "revealjs", header_footer: true);
+        abort "reveal.js conversion failed" unless html.include?(%(<div class="reveal">)) && html.include?("<p>Hello</p>")'
 
 about:
   homepage: https://github.com/asciidoctor/asciidoctor-reveal.js
